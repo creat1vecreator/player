@@ -1,0 +1,12 @@
+.Button {
+  background-color: var(--functional-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

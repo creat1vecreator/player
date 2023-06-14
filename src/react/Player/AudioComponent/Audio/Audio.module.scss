@@ -1,0 +1,56 @@
+.Audio {
+  position: relative;
+  background: var(--typo-dark-disabled);
+  padding: 20px;
+  width: 620px;
+  height: 198px;
+
+  &__loading {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+  }
+
+  &__loadingLine {
+    height: 100%;
+    background-color: var(--functional-white);
+    width: 200px;
+    animation: slideRight 0.5s linear infinite;
+  }
+
+  &__pauseAndPlay {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 45px;
+    cursor: pointer;
+  }
+
+  &__progress {
+    margin-bottom: 42px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__time {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
+    letter-spacing: -0.3px;
+    color: var(--primary-bg);
+  }
+
+  @keyframes slideRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(420px);
+    }
+  }
+}

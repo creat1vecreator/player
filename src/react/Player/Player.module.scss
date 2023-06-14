@@ -1,0 +1,8 @@
+.Player {
+  margin-top: 70px;
+  max-width: 620px;
+
+  @include mobile {
+    margin-top: initial;
+  }
+}

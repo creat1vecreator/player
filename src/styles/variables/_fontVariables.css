@@ -1,0 +1,25 @@
+:root {
+    /* colors */
+    --typo-primary: #000000;
+    --typo-dark-primary: #F5F6F7;
+    --typo-dark-secondary: #EEEEEE;
+    --typo-dark-disabled: #CFD3D6;
+    --typo-dark-placeholder: #A4A3A4;
+
+    /* font-sizes */
+    --font-size-12: 12px;
+    --font-size-24: 24px;
+    --font-size-36: 36px;
+    --font-size-48: 48px;
+
+    /* line-heights */
+    --line-height-16: 16px;
+    --line-height-32: 32px;
+    --line-height-40: 40px;
+    --line-height-52: 52px;
+
+    /* font-weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+
+}

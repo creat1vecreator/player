@@ -1,0 +1,286 @@
+@import "styles/fonts.css";
+@import "styles/variables/_mainVariables.css";
+@import "styles/_globals.css";
+
+button {
+    border: initial;
+}
+
+.Task {
+    min-height: 100%;
+    overflow-y: auto;
+    border: 12px solid var(--primary-bg);
+}
+
+.Task__sectionWrapper {
+    padding: 40px;
+}
+
+.Task__sectionWrapper_first {
+    background-color: var(--secondary-bg);
+}
+
+.Task__sectionWrapper_second {
+    padding: 120px 40px;
+    background-color: var(--primary-bg);
+}
+
+.Task__descriptionAndComponent {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.Task__descriptionText {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-48);
+    line-height: var(--line-height-52);
+    color: var(--typo-primary);
+    max-width: 492px;
+}
+
+.Task__componentWrapper {
+    position: relative;
+    width: 100%;
+    height: 96px;
+}
+
+.Task__form {
+    display: flex;
+    align-items: center;
+}
+
+.Task__input {
+    max-width: 524px;
+    height: 96px;
+    flex-grow: 1;
+    background: var(--functional-white);
+    padding: 32px 36px 36px 16px;
+    text-overflow: ellipsis;
+    border: initial;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--primary-bg);
+}
+
+.Task__input::placeholder {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--typo-dark-placeholder);
+}
+
+.Task__input:focus {
+    outline: none;
+}
+
+.Task__forward {
+    width: 96px;
+    height: 96px;
+    background-color: var(--functional-yellow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Task__descriptionAdditionalText {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--primary-bg);
+    margin-bottom: 182px;
+}
+
+.Task__termsOfUse {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
+    letter-spacing: -0.3px;
+    color: var(--primary-bg);
+}
+
+.Task__termsOfUse_bold {
+    cursor: pointer;
+    font-weight: var(--font-weight-normal);
+}
+
+.Task__explanation {
+    margin-bottom: 120px;
+}
+
+.Task__explanationText {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-48);
+    line-height: var(--line-height-52);
+    letter-spacing: -1px;
+    color: var(--typo-dark-primary);
+    margin-bottom: 40px;
+}
+
+.Task__explanationAdditionalTextAndImg {
+    display: flex;
+    align-items: flex-start;
+}
+
+.Task__explanationAdditionalText {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--typo-dark-secondary);
+}
+
+.Task__dashed {
+    height: 0;
+    border: 1px dashed var(--functional-dash);
+}
+
+.Task__technicalRequirementsTitle {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--typo-dark-primary);
+    margin-bottom: 40px;
+}
+
+.Task__technicalRequirementsNav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 47px;
+}
+
+.Task__technicalRequirementsNavButton {
+    font-weight: var(--font-weight-normal);
+    background-color: transparent;
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+}
+
+.Task__technicalRequirementsNavButton_active {
+    color: var(--typo-dark-primary);
+    text-decoration: underline;
+    pointer-events: none;
+}
+
+.Task__technicalRequirementsNavButton_disabled {
+    color: var(--typo-dark-disabled);
+    cursor: pointer;
+}
+
+.Task__requirementsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 48px;
+}
+
+.Task__requirementsGridItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.Task__requirementsGridItemText {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--typo-dark-secondary);
+}
+
+@media only screen and (max-width: 768px) {
+    .Task {
+        border: initial;
+    }
+
+    .Task__sectionWrapper {
+        padding: 20px 12px;
+    }
+
+    .Task__sectionWrapper_second {
+        padding: 40px 12px;
+    }
+
+    .Task__descriptionAndComponent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Task__descriptionText {
+        font-size: var(--font-size-36);
+        line-height: var(--line-height-40);
+        letter-spacing: -0.4px;
+        margin-bottom: 40px;
+    }
+
+    .Task__component {
+        position: initial;
+    }
+
+    .Task__input {
+        padding: 16px 40px 16px 16px;
+        height: 64px;
+    }
+
+    .Task__forward {
+        height: 64px;
+    }
+
+    .Task__descriptionAdditionalText {
+        font-size: var(--font-size-36);
+        line-height: var(--line-height-40);
+        letter-spacing: -0.4px;
+        margin-bottom: 12px;
+    }
+
+    .Task__explanation {
+        margin-bottom: 36px;
+    }
+
+    .Task__explanationText {
+        font-style: var(--font-size-36);
+        line-height: var(--line-height-40);
+        letter-spacing: -0.4px;
+    }
+
+    .Task__explanationAdditionalTextAndImg {
+        flex-direction: column;
+    }
+
+    .Task__technicalRequirementsNav {
+        align-items: flex-end;
+    }
+
+    .Task__technicalRequirementsNav > *:first-child {
+        width: 158px;
+    }
+
+    .Task__requirementsGrid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Task__requirementsGridItem {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px
+    }
+
+    .Task__requirementsGridItemText {
+        margin: 0;
+    }
+
+    .Task__requirementsGridItemText:first-child {
+        margin-bottom: 10px;
+    }
+}
+

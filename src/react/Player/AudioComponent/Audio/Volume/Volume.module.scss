@@ -1,0 +1,12 @@
+.Volume {
+  width: 160px;
+
+  &__dot {
+    background-color: var(--typo-primary);
+  }
+
+  &__progress {
+    background-color: var(--typo-primary);
+
+  }
+}

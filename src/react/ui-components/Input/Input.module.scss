@@ -1,0 +1,43 @@
+.Input {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__element {
+    background: var(--functional-white);
+    padding: 32px 36px 36px 16px;
+    height: 96px;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--primary-bg);
+
+    &_error {
+      outline: 0.5px solid var(--functional-yellow2);
+    }
+
+    &::placeholder {
+      font-weight: var(--font-weight-light);
+      font-size: var(--font-size-24);
+      line-height: var(--line-height-32);
+      letter-spacing: -0.4px;
+      color: var(--typo-dark-placeholder);
+    }
+
+    @include mobile {
+      padding: 16px 40px 16px 16px;
+      height: 64px;
+    }
+  }
+
+  &__errorIcon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 18px;
+    bottom: calc(50% - 10px);
+  }
+}

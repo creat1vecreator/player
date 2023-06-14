@@ -1,0 +1,49 @@
+.AudioForm {
+  position: relative;
+
+  &__title {
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    letter-spacing: -0.4px;
+    color: var(--primary-bg);
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    max-width: 524px;
+    flex-grow: 1;
+
+    @include mobile {
+      max-height: 64px;
+    }
+  }
+
+  &__forward {
+    width: 96px;
+    height: 96px;
+
+    @include mobile {
+      height: 64px;
+    }
+  }
+
+  &__errorMessage {
+    display: none;
+    position: absolute;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
+    letter-spacing: -0.3px;
+    color: var(--functional-yellow2);
+    bottom: calc(-8px - 12px);
+
+    &_visible {
+      display: initial;
+    }
+  }
+}
