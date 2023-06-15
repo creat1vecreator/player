@@ -13,6 +13,9 @@ export const useAudio = () => {
   const [volume, setVolume] = useState<number>(INITIAL_VOLUME);
   const [currentTime, setCurrentTime] = useState<string>('00:00');
 
+  const handleCanPlay = () => setIsBuffering(false);
+  const handleFinishedBuffering = () => setIsBuffering(true);
+
   const handlePauseAndPlayClick = () => {
     setIsPlaying(!isPlaying);
     const currentAudio = audioRef.current;
@@ -20,9 +23,10 @@ export const useAudio = () => {
     if (currentAudio) {
       if (isPlaying) currentAudio.pause();
       else
-        currentAudio
-          .play()
-          .catch((error) => callToast(ToastTypes.warning, error.toString()));
+        currentAudio.play().catch((error) => {
+          callToast(ToastTypes.warning, error.toString());
+          handleFinishedBuffering();
+        });
     }
   };
   const handleTimeUpdate = (event) => {
@@ -51,8 +55,6 @@ export const useAudio = () => {
       currentAudio.volume = Math.round(volumeNumber) / 100;
     }
   };
-  const handleCanPlay = () => setIsBuffering(false);
-  const handleFinishedBuffering = () => setIsBuffering(true);
 
   useEffect(() => {
     const currentAudio = audioRef.current;
@@ -60,7 +62,6 @@ export const useAudio = () => {
     if (currentAudio) {
       handleUpdateVolume(volume);
       currentAudio.addEventListener('timeupdate', handleTimeUpdate);
-      currentAudio.addEventListener('loadedmetadata', handleCanPlay);
       currentAudio.addEventListener('canplaythrough', handleCanPlay);
       currentAudio.addEventListener('stalled', handleFinishedBuffering);
     }
@@ -68,12 +69,11 @@ export const useAudio = () => {
     return () => {
       if (currentAudio) {
         currentAudio.removeEventListener('timeupdate', handleTimeUpdate);
-        currentAudio.removeEventListener('loadedmetadata', handleCanPlay);
         currentAudio.removeEventListener('canplaythrough', handleCanPlay);
         currentAudio.removeEventListener('stalled', handleFinishedBuffering);
       }
     };
-  }, [handleTimeUpdate, audioRef]);
+  }, []);
 
   return {
     audioRef,

@@ -23,12 +23,17 @@
     }
   }
 
+  &__dropdown {
+    position: absolute;
+  }
+
   &__forward {
     width: 96px;
     height: 96px;
 
     @include mobile {
       height: 64px;
+      width: 64px;
     }
   }
 

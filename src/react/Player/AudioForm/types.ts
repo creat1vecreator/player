@@ -7,4 +7,5 @@ export interface IAudioForm {
   handleInputValue: (event: ChangeEvent<HTMLInputElement>) => void;
   isForwardDisabled: boolean;
   onForwardClick: () => void;
+  getEnteredLinks: () => string[];
 }

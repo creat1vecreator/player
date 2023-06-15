@@ -6,4 +6,4 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-export type ButtonPropsWithChildren = PropsWithChildren<IButton>;
+export type TButtonPropsWithChildren = PropsWithChildren<IButton>;

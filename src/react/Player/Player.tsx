@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { AudioComponent } from './AudioComponent';
 import { AudioForm } from './AudioForm';
+import { storageLinkWorker } from './helpers/storageLinkWorker';
 import { IAudioFormError, PlayerSections } from './types';
 import { validationError } from './utils/validation';
 import styles from './Player.module.scss';
@@ -13,6 +14,8 @@ export const Player = () => {
     isErrorVisible: false,
     errorMessage: 'Ссылка должна начинаться с https',
   });
+
+  const { handleSetEnteredLink, getEnteredLinks } = storageLinkWorker();
 
   const onChangeLink = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -29,8 +32,10 @@ export const Player = () => {
 
   const handleChangeSection = () => {
     if (section === PlayerSections.form) {
-      if (!error.isError) toggleSection();
-      else setError({ ...error, isErrorVisible: true });
+      if (!error.isError) {
+        toggleSection();
+        handleSetEnteredLink(link);
+      } else setError({ ...error, isErrorVisible: true });
     } else toggleSection();
   };
 
@@ -43,6 +48,7 @@ export const Player = () => {
           isForwardDisabled={false}
           onForwardClick={handleChangeSection}
           error={error}
+          getEnteredLinks={getEnteredLinks}
         />
       ) : (
         <AudioComponent src={link} onBackClick={handleChangeSection} />

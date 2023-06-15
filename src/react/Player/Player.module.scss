@@ -1,6 +1,7 @@
 .Player {
-  margin-top: 70px;
   max-width: 620px;
+  width: 100%;
+  transform: translateY(120px);
 
   @include mobile {
     margin-top: initial;

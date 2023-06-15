@@ -1,0 +1,25 @@
+.DropdownItem {
+  cursor: pointer;
+  padding: 0 12px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__label {
+    border-top: 1px solid var(--border-gray);
+    padding: 8px 0;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-20);
+    line-height: var(--line-height-28);
+    letter-spacing: -0.4px;
+    color: var(--typo-dark-placeholder);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--primary-bg);
+    }
+  }
+}

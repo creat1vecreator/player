@@ -48,11 +48,15 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
             options: {
-              esModule: true,
+              modules: {
+                localIdentName: '[name]_[hash:base64:5]',
+              },
             },
           },
-          'css-loader',
           'sass-loader',
           {
             loader: 'sass-resources-loader',
@@ -64,7 +68,12 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+        ],
       },
       {
         test: /\.woff2?$/i,
