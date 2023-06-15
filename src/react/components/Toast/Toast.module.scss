@@ -1,0 +1,49 @@
+.Toast {
+  &__container {
+    padding: 20px;
+  }
+
+  &__contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__messageAndTypeIcon {
+    display: flex;
+    gap: 12px;
+    flex-grow: 1;
+  }
+
+  &__typeIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__typeAndTextWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  &__messageType {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
+    color: var(--primary-bg);
+  }
+
+  &__messageText {
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
+    letter-spacing: -0.3px;
+    color: var(--primary-bg);
+  }
+
+  &__closeIcon {
+    width: 18px;
+    height: 18px;
+  }
+}

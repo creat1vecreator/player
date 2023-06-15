@@ -50,24 +50,31 @@ export const useAudio = (
       currentAudio.volume = Math.round(volumeNumber) / 100;
     }
   };
-
-  const handleBufferingComplete = (event: any) => {};
+  const handleCanPlay = () => {
+    setIsBuffering(false);
+  };
+  const handleLoadStart = () => {
+    setIsPlaying(false);
+    setIsBuffering(true);
+  };
 
   useEffect(() => {
     const currentAudio = audioRef.current;
 
     if (currentAudio) {
       currentAudio.addEventListener('timeupdate', handleTimeUpdate);
-      currentAudio.addEventListener('loadeddata', handleBufferingComplete);
+      currentAudio.addEventListener('canplaythrough', handleCanPlay);
+      currentAudio.addEventListener('stalled', handleLoadStart);
     }
 
     return () => {
       if (currentAudio) {
         currentAudio.removeEventListener('timeupdate', handleTimeUpdate);
-        currentAudio.removeEventListener('loadeddata', handleBufferingComplete);
+        currentAudio.removeEventListener('canplay', handleCanPlay);
+        currentAudio.removeEventListener('stalled', handleLoadStart);
       }
     };
-  }, [handleTimeUpdate, handleBufferingComplete, audioRef]);
+  }, [handleTimeUpdate, audioRef]);
 
   return {
     isBuffering,

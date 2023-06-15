@@ -5,6 +5,9 @@ import { IAudioFormError, PlayerSections } from './types';
 import { validationError } from './utils/validation';
 import styles from './Player.module.scss';
 
+import { callToast } from '@/react/components/Toast';
+import { ToastTypes } from '@/react/components/Toast/types';
+
 export const Player = () => {
   const [link, setLink] = useState<string>('');
   const [section, setSection] = useState<PlayerSections>(PlayerSections.form);
@@ -27,11 +30,18 @@ export const Player = () => {
         : PlayerSections.form,
     );
 
-  const handleChangeSection = () => {
-    if (section === PlayerSections.form) {
-      if (!error.isError) toggleSection();
-      else setError({ ...error, isErrorVisible: true });
-    } else toggleSection();
+  const handleChangeSection = async () => {
+    // if (section === PlayerSections.form) {
+    //   if (!error.isError) toggleSection();
+    //   else setError({ ...error, isErrorVisible: true });
+    // } else toggleSection();
+
+    try {
+      const response = await fetch(link);
+      console.log(response);
+    } catch (e) {
+      callToast(ToastTypes.warning, 'error');
+    }
   };
 
   return (

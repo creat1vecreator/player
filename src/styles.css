@@ -8,7 +8,7 @@ button {
 
 .Task {
     min-height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     border: 12px solid var(--primary-bg);
 }
 
@@ -133,6 +133,12 @@ button {
     line-height: var(--line-height-32);
     letter-spacing: -0.4px;
     color: var(--typo-dark-secondary);
+    margin-right: 36px;
+}
+
+.Task__illustration {
+    max-width: 100%;
+    transform: translateY(-100px);
 }
 
 .Task__dashed {
@@ -254,6 +260,14 @@ button {
 
     .Task__explanationAdditionalTextAndImg {
         flex-direction: column;
+    }
+
+    .Task__explanationAdditionalText {
+        margin-right: initial;
+    }
+
+    .Task__illustration {
+        transform: initial;
     }
 
     .Task__technicalRequirementsNav {
