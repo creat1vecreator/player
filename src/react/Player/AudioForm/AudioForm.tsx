@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, KeyboardEvent } from 'react';
 import cn from 'classnames/bind';
 import { IAudioForm } from './types';
 import arrowRight from '@/assets/icons/arrowRight.svg';
@@ -18,12 +18,19 @@ export const AudioForm: FC<IAudioForm> = ({
   const { isErrorVisible, errorMessage } = error;
   const isError = isErrorVisible && Boolean(errorMessage);
 
+  const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onForwardClick();
+    }
+  };
+
   return (
     <div className={styles.AudioForm}>
       <div className={styles.AudioForm__title}>Insert the link</div>
 
       <div className={styles.AudioForm__form}>
         <Input
+          onKeyDown={onInputKeyDown}
           value={inputValue}
           onChange={handleInputValue}
           placeholder="https://"

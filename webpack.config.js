@@ -18,12 +18,14 @@ module.exports = {
     hot: true,
   },
 
-  entry: path.resolve(__dirname, 'src', 'index.ts'),
+  entry: {
+    main: path.resolve(__dirname, 'src', 'index.ts'),
+  },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: '[name].[contenthash].js',
+    filename: devMode ? '[name].js' : '[name].[contenthash].js',
   },
 
   plugins: [
@@ -31,7 +33,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: devMode ? '[name].css' : '[name].[contenthash].css',
     }),
   ],
 
@@ -41,11 +43,15 @@ module.exports = {
         test: /\.html$/i,
         loader: 'html-loader',
       },
-
       {
         test: /\.scss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+            },
+          },
           'css-loader',
           'sass-loader',
           {
@@ -56,12 +62,10 @@ module.exports = {
           },
         ],
       },
-
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-
       {
         test: /\.woff2?$/i,
         type: 'asset/resource',
@@ -69,35 +73,15 @@ module.exports = {
           filename: 'fonts/[name][ext]',
         },
       },
-
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
-        use: devMode
-          ? []
-          : [
-              {
-                loader: 'image-webpack-loader',
-              },
-            ],
         type: 'asset/resource',
         generator: {
           filename: 'assets/icons/[name][ext]',
         },
       },
-
       {
-        test: /\.ts$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
-          },
-        },
-      },
-
-      {
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',

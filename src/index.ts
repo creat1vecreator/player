@@ -1,4 +1,4 @@
-import './styles.css';
+import './indexStyles.css';
 
 import './index.html';
 import './js/navButtons/navButtons';

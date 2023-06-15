@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import cn from 'classnames/bind';
 import { IToastInnerProps, ToastTypes } from '../types';
 import close from '@/assets/icons/close.svg';
 import warning from '@/assets/icons/warningToast.svg';

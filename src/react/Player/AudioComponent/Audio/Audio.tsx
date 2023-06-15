@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC } from 'react';
 import { useAudio } from './hooks/useAudio';
 import { Progress } from './Progress';
 import { IAudio } from './types';
@@ -8,8 +8,8 @@ import play from '@/assets/icons/play.svg';
 import styles from './Audio.module.scss';
 
 export const Audio: FC<IAudio> = ({ src }: IAudio) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const {
+    audioRef,
     isBuffering,
     isPlaying,
     currentTime,
@@ -18,7 +18,7 @@ export const Audio: FC<IAudio> = ({ src }: IAudio) => {
     handleUpdateProgress,
     handleUpdateVolume,
     handlePauseAndPlayClick,
-  } = useAudio(audioRef);
+  } = useAudio();
 
   const pauseAndPlayImage = isPlaying ? pause : play;
 
@@ -34,7 +34,7 @@ export const Audio: FC<IAudio> = ({ src }: IAudio) => {
         onClick={handlePauseAndPlayClick}
         src={pauseAndPlayImage}
         className={styles.Audio__pauseAndPlay}
-        alt="pause-play-image"
+        alt="pause-play"
       />
 
       <Progress

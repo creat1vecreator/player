@@ -1,11 +1,12 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { INITIAL_VOLUME } from '../constants';
 
+import { callToast } from '@/react/components/Toast';
+import { ToastTypes } from '@/react/components/Toast/types';
 import { formatTime } from '@/utils/timeWorkers';
 
-export const useAudio = (
-  audioRef: MutableRefObject<HTMLAudioElement | null>,
-) => {
+export const useAudio = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isBuffering, setIsBuffering] = useState<boolean>(true);
   const [progress, setProgress] = useState<number>(0);
@@ -18,11 +19,13 @@ export const useAudio = (
 
     if (currentAudio) {
       if (isPlaying) currentAudio.pause();
-      else currentAudio.play();
+      else
+        currentAudio
+          .play()
+          .catch((error) => callToast(ToastTypes.warning, error.toString()));
     }
   };
-
-  const handleTimeUpdate = (event: any) => {
+  const handleTimeUpdate = (event) => {
     const newTime = event.target.currentTime;
     const duration = audioRef.current?.duration;
     setCurrentTime(formatTime(newTime));
@@ -30,7 +33,6 @@ export const useAudio = (
       setProgress((newTime / duration) * 100);
     }
   };
-
   const handleUpdateProgress = (newProgress: number) => {
     const currentAudio = audioRef.current;
     const duration = currentAudio?.duration;
@@ -42,7 +44,6 @@ export const useAudio = (
       }
     }
   };
-
   const handleUpdateVolume = (volumeNumber: number) => {
     const currentAudio = audioRef.current;
     if (currentAudio) {
@@ -50,33 +51,32 @@ export const useAudio = (
       currentAudio.volume = Math.round(volumeNumber) / 100;
     }
   };
-  const handleCanPlay = () => {
-    setIsBuffering(false);
-  };
-  const handleLoadStart = () => {
-    setIsPlaying(false);
-    setIsBuffering(true);
-  };
+  const handleCanPlay = () => setIsBuffering(false);
+  const handleFinishedBuffering = () => setIsBuffering(true);
 
   useEffect(() => {
     const currentAudio = audioRef.current;
 
     if (currentAudio) {
+      handleUpdateVolume(volume);
       currentAudio.addEventListener('timeupdate', handleTimeUpdate);
+      currentAudio.addEventListener('loadedmetadata', handleCanPlay);
       currentAudio.addEventListener('canplaythrough', handleCanPlay);
-      currentAudio.addEventListener('stalled', handleLoadStart);
+      currentAudio.addEventListener('stalled', handleFinishedBuffering);
     }
 
     return () => {
       if (currentAudio) {
         currentAudio.removeEventListener('timeupdate', handleTimeUpdate);
-        currentAudio.removeEventListener('canplay', handleCanPlay);
-        currentAudio.removeEventListener('stalled', handleLoadStart);
+        currentAudio.removeEventListener('loadedmetadata', handleCanPlay);
+        currentAudio.removeEventListener('canplaythrough', handleCanPlay);
+        currentAudio.removeEventListener('stalled', handleFinishedBuffering);
       }
     };
   }, [handleTimeUpdate, audioRef]);
 
   return {
+    audioRef,
     isBuffering,
     isPlaying,
     currentTime,

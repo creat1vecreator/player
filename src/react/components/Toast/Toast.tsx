@@ -17,7 +17,7 @@ export const Toast = ({ className, ...props }: ToastProps) => {
     <div className={cx(styles.Toast, className)}>
       <ToastContainer
         position="top-center"
-        autoClose={500000}
+        autoClose={5000}
         hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
@@ -28,9 +28,7 @@ export const Toast = ({ className, ...props }: ToastProps) => {
         className={styles.Toast__container}
         {...props}
         closeButton={false}
-      >
-        some content
-      </ToastContainer>
+      />
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const useSliderDragAndClick = (
     if (newProgress <= 100) setProgress(newProgress);
   };
 
-  const handleSliderDrag = (event: any) => {
+  const handleSliderDrag = (event) => {
     const sliderWidth = sliderWrapperRef.current?.offsetWidth;
     const cursorPosition = event.clientX;
 

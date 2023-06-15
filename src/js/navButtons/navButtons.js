@@ -1,4 +1,5 @@
-import { activeSelector, disabledSelector } from './constants/selectors';
+const disabledSelector = 'Task__technicalRequirementsNavButton_disabled';
+const activeSelector = 'Task__technicalRequirementsNavButton_active';
 
 const checkIfFirstChild = (targetElement) =>
   !targetElement?.previousElementSibling;

@@ -1,14 +1,6 @@
-@import "styles/fonts.css";
-@import "styles/variables/_mainVariables.css";
-@import "styles/_globals.css";
-
-button {
-    border: initial;
-}
-
 .Task {
     min-height: 100%;
-    overflow-y: hidden;
+    overflow-x: hidden;
     border: 12px solid var(--primary-bg);
 }
 
@@ -219,6 +211,7 @@ button {
     .Task__descriptionAndComponent {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
     .Task__descriptionText {
@@ -228,16 +221,24 @@ button {
         margin-bottom: 40px;
     }
 
+    .Task__componentWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
     .Task__component {
         position: initial;
     }
 
+
     .Task__input {
+        width: calc(100% - 64px);
         padding: 16px 40px 16px 16px;
         height: 64px;
     }
 
     .Task__forward {
+        max-width: 64px;
         height: 64px;
     }
 
@@ -297,4 +298,3 @@ button {
         margin-bottom: 10px;
     }
 }
-
