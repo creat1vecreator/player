@@ -31,11 +31,11 @@ export const useSliderDragAndClick = (
     if (cursorPosition > right) setProgress(100);
   };
 
-  function handleMouseUp() {
+  const handleMouseUp = () => {
     body.removeEventListener('mousemove', handleSliderDrag);
     body.removeEventListener('mouseup', handleMouseUp);
     body.removeEventListener('mouseleave', handleMouseUp);
-  }
+  };
 
   const handleMouseDown = () => {
     body.addEventListener('mousemove', handleSliderDrag);

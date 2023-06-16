@@ -3,10 +3,6 @@ export enum PlayerSections {
   player = 'player',
 }
 
-export interface ILink {
-  link: string;
-}
-
 export interface IAudioFormError {
   isError: boolean;
   errorMessage: string;

@@ -4,7 +4,6 @@ import styles from './DropdownItem.module.scss';
 
 export const DropdownItem: FC<IDropdownItemProps> = ({
   item,
-  targetItem,
   onClickItem,
 }: IDropdownItemProps) => {
   return (
