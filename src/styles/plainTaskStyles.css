@@ -206,7 +206,7 @@
     color: var(--typo-dark-secondary);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 930px) {
     .Task {
         border: initial;
     }
