@@ -1,4 +1,9 @@
 .AudioComponent {
+  transform: translateY(60px);
+
+  @include mobile {
+    transform: initial;
+  }
 
   &__back {
     margin-bottom: 20px;

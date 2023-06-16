@@ -38,8 +38,11 @@ export const AudioForm: FC<IAudioForm> = ({
     handleInputValue(event as ChangeEvent<HTMLInputElement>);
   };
 
-  const toggleDropDownVisibility = () =>
-    setIsDropdownVisible(!isDropdownVisible);
+  const toggleDropDownVisibility = async () => {
+    await setTimeout(() => {
+      setIsDropdownVisible(!isDropdownVisible);
+    }, 100);
+  };
 
   return (
     <div className={styles.AudioForm}>
