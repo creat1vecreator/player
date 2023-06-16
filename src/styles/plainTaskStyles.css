@@ -230,6 +230,7 @@
         line-height: var(--line-height-40);
         letter-spacing: -0.4px;
         margin-bottom: 40px;
+        margin-right: 112px;
     }
 
     .Task__component {
